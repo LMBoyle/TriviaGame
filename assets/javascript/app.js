@@ -3,9 +3,18 @@ var correct = 0;
 var wrong = 0;
 var unanswered = 0;
 
-var triva = {
-  
-}
+const triva = [
+  {
+    question: "The Simpsons originally appeared as a short on what TV show?",
+    answers: {
+      a: "Married With Children",
+      b: "Matt Groening's American Family",
+      c: "The Tracy Ullman Show",
+      d: "Dr. N!godatu"
+    },
+    correctAnswer: "c"
+  },
+];
 // FUNCTIONS ===========================
 // TODO Display a start page
 // TODO On start, display first question
