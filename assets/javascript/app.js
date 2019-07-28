@@ -3,6 +3,14 @@ var correct = 0;
 var wrong = 0;
 var unanswered = 0;
 
+var question = document.getElementById("question");
+var ansA = document.getElementById("answer1");
+var ansB = document.getElementById("answer2");
+var ansC = document.getElementById("answer3");
+var ansD = document.getElementById("answer4");
+var start = document.getElementById("startCard");
+var game = document.getElementById("gameCard");
+
 const triva = [
   {
     question: "The Simpsons originally appeared as a short on what TV show?",
@@ -56,9 +64,20 @@ const triva = [
   },
 ];
 // FUNCTIONS ===========================
-// TODO Display a start page
+//Display a start page
+function startGame () {
+// Hide start and show game
+start.style.display = "none";
+game.style.display = "grid";
+
 // TODO On start, display first question
+
 // TODO Display and start timer
+
+
+}
+
+
 // TODO If time is up, show time up screen
 // TODO If answer is wrong, show wrong answer screen
 // TODO If answer is wrong, add to wrong answers
@@ -69,3 +88,7 @@ const triva = [
 // TODO If time up, show end screen and # of right/wrong/unanswered
 
 // CALL FUNCTIONS ======================
+document.getElementById("start").addEventListener("click", startGame);
+
+
+// * ansA.innerHTML = triva[0].answers.a

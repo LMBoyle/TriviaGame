@@ -48,6 +48,28 @@ body {
   margin: 5px;
 }
 
+/* Directions & Start */
+#startCard {
+  display: grid;
+}
+
+#directions {
+  grid-column: 1;
+  grid-row: 3;
+  font-size: 20px;
+  margin: 5px;
+}
+
+#startBtn {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+/* Game */
+#gameCard {
+  display: none;
+}
+
 /* Timer */
 #timer {
   grid-column: 1;
