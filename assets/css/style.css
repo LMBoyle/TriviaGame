@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: url(../images/donuts.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  font-family: 'Rock Salt', cursive;
+  color: white;
+}
+
+/* Grid */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  padding: 10px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.grid-container > div {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+/* Card */
+.card {
+  background-color: rgba(112, 209, 254, 0.9);
+  grid-column: 2 / 5;
+  display: grid;
+  row-gap: 10px;
+  border: 1px solid rgb(66, 79, 70);
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+/* Title */
+#title {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 40px;
+  margin: 5px;
+}
+
+/* Timer */
+#timer {
+  grid-column: 1;
+  grid-row: 3;
+  font-size: 20px;
+  margin: 5px;
+}
+
+/* Questions */
+#question {
+  font-size: 20px;
+  margin: 5px;
+}
+
+.triva {
+  grid-column: 1;
+  grid-row: 4;
+  display: grid;
+}
+
+/* Answers */
+button {
+  margin: 5px;
+  font-family: 'Rock Salt', cursive;
+  border-radius: 25px;
+  border: 1px solid rgb(66, 79, 70);
+}

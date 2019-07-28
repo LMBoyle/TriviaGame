@@ -14,6 +14,46 @@ const triva = [
     },
     correctAnswer: "c"
   },
+  {
+    question: "What town to The Simpsons live in?",
+    answers: {
+      a: "Springfield",
+      b: "Gotham City",
+      c: "Stars Hollow",
+      d: "Mayberry"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "What is the name of the bar Homer goes to?",
+    answers: {
+      a: "McLaren's Pub",
+      b: "Moe's Tavern",
+      c: "The Drunken Clam",
+      d: "Cheers"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "What is the name of Homer's brother",
+    answers: {
+      a: "Hank Powell",
+      b: "Henry Powell",
+      c: "Harry Powell",
+      d: "Herbert Powell"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "What was the name of the first Simpsons episode aired in the US?",
+    answers: {
+      a: "Some Enchanted Evening",
+      b: "Bart the Genius",
+      c: "Simpsons Roasting On An Open Fire",
+      d: "The Call of the Simpsons"
+    },
+    correctAnswer: "c"
+  },
 ];
 // FUNCTIONS ===========================
 // TODO Display a start page

@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Triva Game </title>
+    <title> The Simpsons Triva Game </title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
   </head>
-  
+
   <body>
-    
+    <div class="grid-container">
+      <div class="card">
+        <div id="title">
+          The Simpsons Triva
+        </div>
+
+        <div id="timer">
+          Time Left: 0:00
+        </div>
+
+        <div class="triva">
+          <div id="question"> Question </div>
+          <button id="answer1" value="a"> Answer 1 </button>
+          <button id="answer2" value="b"> Answer 2 </button>
+          <button id="answer3" value="c"> Answer 3 </button>
+          <button id="answer4" value="d"> Answer 4 </button>
+        </div>
+      </div>
+    </div>
     <script src="assets/javascript/app.js"></script>
   </body>
 </html>
