@@ -1,7 +1,8 @@
 // VARIABLES ===========================
 var correct = 0;
 var wrong = 0;
-var unanswered = 0;
+var unanswered = 5;
+var q = 0;
 
 var question = document.getElementById("question");
 var ansA = document.getElementById("answer1");
@@ -67,22 +68,62 @@ const triva = [
 //Display a start page
 function startGame () {
 // Hide start and show game
-start.style.display = "none";
-game.style.display = "grid";
+  start.style.display = "none";
+  game.style.display = "grid";
+  
+//  On start, display first question
+  displayQuestion()
+}
 
-// TODO On start, display first question
-
+function displayQuestion() {
+  question.innerHTML = triva[q].question;
+  ansA.innerHTML = triva[q].answers.a;
+  ansB.innerHTML = triva[q].answers.b;
+  ansC.innerHTML = triva[q].answers.c;
+  ansD.innerHTML = triva[q].answers.d;
 // TODO Display and start timer
+
+
+  ansA.addEventListener("click", answer);
+  ansB.addEventListener("click", answer);
+  ansC.addEventListener("click", answer);
+  ansD.addEventListener("click", answer);
 
 
 }
 
+function answer(answer){
 
-// TODO If time is up, show time up screen
-// TODO If answer is wrong, show wrong answer screen
-// TODO If answer is wrong, add to wrong answers
-// TODO If answer is right, show right answer screen
-// TODO If answer is right, add to wrong answers
+  // TODO If time is up, show time up screen
+  if () {
+
+  }
+
+  // TODO If answer is wrong, show wrong answer screen
+  else if (answer.target.value != triva[q].correctAnswer) {
+    console.log("Wrong")
+  // TODO If answer is wrong, add to wrong answers
+  }
+
+  // TODO If answer is right, show right answer screen
+  else if (answer.target.value === triva[q].correctAnswer) {
+    console.log("Correct!")
+  // TODO If answer is right, add to wrong answers
+  }
+
+  console.log(triva[q].correctAnswer)
+  q++;
+  displayQuestion();
+  console.log("you clicked me!");
+  console.log(q);
+  console.log(answer.target.value);
+  
+}
+
+
+
+
+
 // TODO After a few seconds, go to next question
 // TODO At end of all questions, show end screen and # of right/wrong
 // TODO If time up, show end screen and # of right/wrong/unanswered
@@ -91,4 +132,4 @@ game.style.display = "grid";
 document.getElementById("start").addEventListener("click", startGame);
 
 
-// * ansA.innerHTML = triva[0].answers.a
+
