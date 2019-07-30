@@ -56,6 +56,7 @@ var correct = 0;
 var wrong = 0;
 var unanswered = triva.length;
 var q = 0;
+var timeleft = 10;
 
 var question = document.getElementById("question");
 var ansA = document.getElementById("answer1");
@@ -86,8 +87,14 @@ function displayQuestion() {
   ansC.innerHTML = triva[q].answers.c;
   ansD.innerHTML = triva[q].answers.d;
 
-// TODO Display and start timer
-
+// Display and start timer
+  var downloadTimer = setInterval(function() {
+    timeleft--;
+    document.getElementById("timer").textContent = "Time Left: " + timeleft + " s";
+    if (timeleft <= 0) {
+      console.log("Time Up!");
+      clearInterval(downloadTimer);
+    }},1000);
 
   ansA.addEventListener("click", answer);
   ansB.addEventListener("click", answer);
@@ -102,12 +109,12 @@ function answer(answer) {
   }
 
   // TODO If time is up, show time up screen
-  // else if () {
-    // console.log("Time Up!");
+  else if(timeleft <= 0) {
+    console.log("Time Up!");
     
 
 
-  // }
+  }
 
   // TODO If answer is wrong, show wrong answer screen
   else if (answer.target.value != triva[q].correctAnswer) {
