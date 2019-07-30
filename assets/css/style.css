@@ -103,8 +103,15 @@ button {
   grid-row: 4;
 }
 
-#test {
+#correctGif,
+#wrongGif {
   display: none;
+}
+
+#startGif {
+  display: block;
+  grid-column: 1;
+  grid-row: 4;
 }
 
 #triva {

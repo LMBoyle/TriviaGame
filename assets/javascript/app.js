@@ -56,7 +56,11 @@ var correct = 0;
 var wrong = 0;
 var unanswered = triva.length;
 var q = 0;
-var timeleft = 10;
+
+// Timer Vars
+var timerRunning = false;
+var timeLeft = 120;
+var countDown;
 
 var question = document.getElementById("question");
 var ansA = document.getElementById("answer1");
@@ -65,82 +69,121 @@ var ansC = document.getElementById("answer3");
 var ansD = document.getElementById("answer4");
 var start = document.getElementById("startCard");
 var game = document.getElementById("gameCard");
-var gifWin = document.getElementById("test");
 var trivaCard = document.getElementById("triva");
+
+// Gifs
+var gifStart = document.getElementById("startGif");
+var gifCorrect = document.getElementById("correctGif");
+var gifWrong = document.getElementById("wrongGif");
+
 
 
 // FUNCTIONS ===========================
 //Display a start page
-function startGame () {
-// Hide start and show game
+function startGame() {
+// Hide start
   start.style.display = "none";
-  game.style.display = "grid";
-  
+
 //  On start, display first question
-  displayQuestion()
+  displayQuestion();
+}
+
+function startTimer() {
+// Display and start timer
+  timeleft = 120;
+
+  countDown = setInterval(count, 1000);
+  timerRunning = true;
+}
+
+function stopTimer() {
+  timerRunning = false;
+  clearInterval(countDown);
+}
+
+function count() {
+  timeleft--;
+  document.getElementById("timer").textContent = "Time Left: " + timeleft + " s";
+
+  if (timeleft <= 0) {
+    // TODO If time is up, show time up screen
+    console.log("Time Up!");
+    stopTimer();
+  }
 }
 
 function displayQuestion() {
+  // Show the question and answers
+  game.style.display = "grid";
+
+  // Hide any gifs on screen
+  gifCorrect.style.display = "none";
+  gifWrong.style.display = "none";
+
+  // Show the next question
   question.innerHTML = triva[q].question;
+
+  // Show the answer choices to the question
   ansA.innerHTML = triva[q].answers.a;
   ansB.innerHTML = triva[q].answers.b;
   ansC.innerHTML = triva[q].answers.c;
   ansD.innerHTML = triva[q].answers.d;
 
-// Display and start timer
-  var downloadTimer = setInterval(function() {
-    timeleft--;
-    document.getElementById("timer").textContent = "Time Left: " + timeleft + " s";
-    if (timeleft <= 0) {
-      console.log("Time Up!");
-      clearInterval(downloadTimer);
-    }},1000);
+  // Run the start timer function
+  startTimer();
 
+  // Wait for one of the answer buttons to be clicked
   ansA.addEventListener("click", answer);
   ansB.addEventListener("click", answer);
   ansC.addEventListener("click", answer);
   ansD.addEventListener("click", answer);
 }
 
-
+// Once a answer has been selected
 function answer(answer) {
+  // Stop and reset the timer
+  stopTimer();
+
+  //! If all the questions have been answered, go to the end
   if (triva.length <= q) {
     endGame();
   }
 
-  // TODO If time is up, show time up screen
-  else if(timeleft <= 0) {
-    console.log("Time Up!");
-    
-
-
-  }
-
-  // TODO If answer is wrong, show wrong answer screen
+  // If answer is wrong, show wrong answer screen
   else if (answer.target.value != triva[q].correctAnswer) {
     console.log("Wrong");
-    //If answer is wrong, add to wrong answers
+    // If answer is wrong, add to wrong answers
     wrong++;
     unanswered--;
     q++;
-    console.log("Unanswered: ", unanswered);
+    
+    // Hide questions and show gif
     trivaCard.style.display = "none";
-    test.style.display = "block";
-    displayQuestion();
+    gifWrong.style.display = "block";
+
+    // TODO Show next question after 5 seconds
+    setTimeout(testTimer, 5000);
   }
 
-  // TODO If answer is right, show right answer screen
+  // If answer is right, show right answer screen
   else if (answer.target.value === triva[q].correctAnswer) {
     console.log("Correct!");
-    //If answer is right, add to wrong answers
+    // If answer is right, add to wrong answers
     correct++;
     unanswered--;
     q++;
-    console.log("Unanswered: ", unanswered)
-    displayQuestion();
-  }
 
-  console.log("Question #: ", q);
+    // Hide questions and show gif
+    trivaCard.style.display = "none";
+    gifCorrect.style.display = "block";
+
+    // TODO Show next question after 5 seconds
+    setTimeout(testTimer, 5000);
+  }
+}
+
+function testTimer () {
+  console.log("Timeout")
 }
 
 
@@ -150,13 +193,5 @@ function endGame() {
 console.log("All answered");
 }
 
-
-
-
-// TODO After a few seconds, go to next question
-
 // CALL FUNCTIONS ======================
-document.getElementById("start").addEventListener("click", startGame);
-
-
-
+window.addEventListener("keydown", startGame);
