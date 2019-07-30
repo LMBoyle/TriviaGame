@@ -1,17 +1,4 @@
 // VARIABLES ===========================
-var correct = 0;
-var wrong = 0;
-var unanswered = 5;
-var q = 0;
-
-var question = document.getElementById("question");
-var ansA = document.getElementById("answer1");
-var ansB = document.getElementById("answer2");
-var ansC = document.getElementById("answer3");
-var ansD = document.getElementById("answer4");
-var start = document.getElementById("startCard");
-var game = document.getElementById("gameCard");
-
 const triva = [
   {
     question: "The Simpsons originally appeared as a short on what TV show?",
@@ -64,6 +51,23 @@ const triva = [
     correctAnswer: "c"
   },
 ];
+
+var correct = 0;
+var wrong = 0;
+var unanswered = triva.length;
+var q = 0;
+
+var question = document.getElementById("question");
+var ansA = document.getElementById("answer1");
+var ansB = document.getElementById("answer2");
+var ansC = document.getElementById("answer3");
+var ansD = document.getElementById("answer4");
+var start = document.getElementById("startCard");
+var game = document.getElementById("gameCard");
+var gifWin = document.getElementById("test");
+var trivaCard = document.getElementById("triva");
+
+
 // FUNCTIONS ===========================
 //Display a start page
 function startGame () {
@@ -81,6 +85,7 @@ function displayQuestion() {
   ansB.innerHTML = triva[q].answers.b;
   ansC.innerHTML = triva[q].answers.c;
   ansD.innerHTML = triva[q].answers.d;
+
 // TODO Display and start timer
 
 
@@ -88,45 +93,60 @@ function displayQuestion() {
   ansB.addEventListener("click", answer);
   ansC.addEventListener("click", answer);
   ansD.addEventListener("click", answer);
-
-
 }
 
-function answer(answer){
+
+function answer(answer) {
+  if (triva.length <= q) {
+    endGame();
+  }
 
   // TODO If time is up, show time up screen
-  if () {
+  // else if () {
+    // console.log("Time Up!");
+    
 
-  }
+
+  // }
 
   // TODO If answer is wrong, show wrong answer screen
   else if (answer.target.value != triva[q].correctAnswer) {
-    console.log("Wrong")
-  // TODO If answer is wrong, add to wrong answers
+    console.log("Wrong");
+    //If answer is wrong, add to wrong answers
+    wrong++;
+    unanswered--;
+    q++;
+    console.log("Unanswered: ", unanswered);
+    trivaCard.style.display = "none";
+    test.style.display = "block";
+    displayQuestion();
   }
 
   // TODO If answer is right, show right answer screen
   else if (answer.target.value === triva[q].correctAnswer) {
-    console.log("Correct!")
-  // TODO If answer is right, add to wrong answers
+    console.log("Correct!");
+    //If answer is right, add to wrong answers
+    correct++;
+    unanswered--;
+    q++;
+    console.log("Unanswered: ", unanswered)
+    displayQuestion();
   }
 
-  console.log(triva[q].correctAnswer)
-  q++;
-  displayQuestion();
-  console.log("you clicked me!");
-  console.log(q);
-  console.log(answer.target.value);
-  
+  console.log("Question #: ", q);
 }
 
+
+function endGame() {
+// TODO At end of all questions, show end screen and # of right/wrong
+// TODO If time up, show end screen and # of right/wrong/unanswered
+console.log("All answered");
+}
 
 
 
 
 // TODO After a few seconds, go to next question
-// TODO At end of all questions, show end screen and # of right/wrong
-// TODO If time up, show end screen and # of right/wrong/unanswered
 
 // CALL FUNCTIONS ======================
 document.getElementById("start").addEventListener("click", startGame);
