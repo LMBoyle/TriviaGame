@@ -60,11 +60,6 @@ body {
   margin: 5px;
 }
 
-#startBtn {
-  grid-column: 1;
-  grid-row: 4;
-}
-
 /* Game */
 #gameCard {
   display: none;
@@ -96,6 +91,7 @@ button {
   font-family: 'Rock Salt', cursive;
   border-radius: 25px;
   border: 1px solid rgb(66, 79, 70);
+  width: 750px;
 }
 
 /* Gifs */
@@ -137,4 +133,9 @@ button {
 #numUnans {
   grid-column: 1;
   grid-row: 5;
+}
+
+#reset {
+  grid-column: 1;
+  grid-row: 6;
 }

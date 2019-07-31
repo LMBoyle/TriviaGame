@@ -59,7 +59,7 @@ var q = 0;
 
 // Timer Vars
 var timerRunning = false;
-var timeLeft = 120;
+var timeLeft = 60;
 var countDown;
 
 // Question 
@@ -110,7 +110,7 @@ function startGame() {
 
 function startTimer() {
 // Display and start timer
-  timeleft = 120;
+  timeleft = 60;
 
   countDown = setInterval(count, 1000);
   timerRunning = true;
@@ -236,7 +236,6 @@ function answer(answer) {
     trivaCard.style.display = "none";     // Hide question & answers
     timer.style.display = "none"          // Hide timer
 
-    console.log(q);
 
     switch (q) {
       case 0:
@@ -276,7 +275,22 @@ function endGame() {
   numCorrect.textContent = "Correct : " + correct;
   numWrong.textContent = "Wrong : " + wrong;
   numUnans.textContent = "Unanswered : " + unanswered;
+  document.getElementById("reset").addEventListener("click", restart);
+}
 
+function restart() {
+  correct = 0;
+  wrong = 0;
+  unanswered = triva.length;
+  q = 0;
+
+  // Timer Vars
+  timerRunning = false;
+  timeLeft = 60;
+  countDown;
+
+  start.style.display = "grid";  // Show Start Screen
+  end.style.display = "none";    // Hide the score
 }
 
 // CALL FUNCTIONS ======================
