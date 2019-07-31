@@ -99,12 +99,8 @@ button {
 }
 
 /* Gifs */
-.gifs {
+#gifs {
   grid-row: 4;
-}
-
-#correctGif,
-#wrongGif {
   display: none;
 }
 
