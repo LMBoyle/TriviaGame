@@ -5,7 +5,7 @@ const triva = [
     answers: {
       a: "Married With Children",
       b: "Matt Groening's American Family",
-      c: "The Tracy Ullman Show",
+      c: "The Tracey Ullman Show",
       d: "A Different World"
     },
     correctAnswer: "c"
@@ -232,13 +232,36 @@ function answer(answer) {
     // If answer is right, add to wrong answers
     correct++;
     unanswered--;
-    q++;
 
     trivaCard.style.display = "none";     // Hide question & answers
     timer.style.display = "none"          // Hide timer
-    gif.src = "assets/images/correct.gif" // Set gif src to the needed gif
-    gifCard.style.display = "block";      // Show the gif
 
+    console.log(q);
+
+    switch (q) {
+      case 0:
+        gif.src = "assets/images/tvshowCorrect.gif" // Set gif src to the needed gif
+        gifCard.style.display = "block";            // Show the gif
+        break;
+      case 1:
+        gif.src = "assets/images/springfieldCorrect.gif" // Set gif src to the needed gif
+        gifCard.style.display = "block";            // Show the gif
+        break;
+      case 2:
+        gif.src = "assets/images/moesCorrect.gif" // Set gif src to the needed gif
+        gifCard.style.display = "block";            // Show the gif
+        break;
+      case 3:
+        gif.src = "assets/images/herbertCorrect.gif" // Set gif src to the needed gif
+        gifCard.style.display = "block";            // Show the gif
+        break;
+      case 4:
+        gif.src = "assets/images/firstepCorrect.gif" // Set gif src to the needed gif
+        gifCard.style.display = "block";            // Show the gif
+        break;
+    }
+    
+    q++;
     // Show next question after 5 seconds
     setTimeout(displayQuestion, 5000);
   }
