@@ -81,7 +81,7 @@ body {
 /* Questions */
 #question {
   font-size: 20px;
-  margin: 5px;
+  margin: 5px 5px 10px;
 }
 
 .triva {
@@ -112,4 +112,29 @@ button {
 
 #triva {
   display: grid;
+}
+
+#giveCorrect {
+  display: none;
+  margin-bottom: 15px;
+}
+
+/* End Game */
+#scoreCard {
+  display: none;
+}
+
+#numCorrect {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+#numWrong {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+#numUnans {
+  grid-column: 1;
+  grid-row: 5;
 }

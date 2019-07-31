@@ -6,7 +6,7 @@ const triva = [
       a: "Married With Children",
       b: "Matt Groening's American Family",
       c: "The Tracy Ullman Show",
-      d: "Dr. N!godatu"
+      d: "A Different World"
     },
     correctAnswer: "c"
   },
@@ -70,12 +70,19 @@ var ansA = document.getElementById("answer1");
 var ansB = document.getElementById("answer2");
 var ansC = document.getElementById("answer3");
 var ansD = document.getElementById("answer4");
+var corrAns = triva[q].correctAnswer;
 
 // Start Card
 var start = document.getElementById("startCard");
 
 // Game Card
 var game = document.getElementById("gameCard");
+
+// Score Card
+var end = document.getElementById("scoreCard");
+var numCorrect = document.getElementById("numCorrect");
+var numWrong = document.getElementById("numWrong");
+var numUnans = document.getElementById("numUnans");
 
 // Triva Card inside of Game Card
 var trivaCard = document.getElementById("triva");
@@ -87,6 +94,7 @@ var timerDiv = document.getElementById("timer");
 var gifStart = document.getElementById("startGif");
 var gif = document.getElementById("gif");
 var gifCard = document.getElementById("gifs");
+var ifWrong = document.getElementById("giveCorrect")
 
 
 
@@ -118,14 +126,27 @@ function count() {
   document.getElementById("timer").textContent = "Time Left: " + timeleft + " s";
 
   if (timeleft <= 0) {
-    // TODO If time is up, show time up screen
+    // If time is up, show time up screen
     console.log("Time Up!");
     stopTimer();
+    q++;
+    
+    trivaCard.style.display = "none";   // Hide question & answers
+    timer.style.display = "none"        // Hide timer
+    gif.src = "assets/images/timeUp.gif" // Set gif src to the needed gif
+    gifCard.style.display = "block";    // Show the gif
+
+    // Show next question after 5 seconds
+    setTimeout(displayQuestion, 5000);
   }
 }
 
+function showCorrect() {
+
+}
+
 function displayQuestion() {
-  //! If all the questions have been answered, go to the end
+  //If all the questions have been answered, go to the end
   if (triva.length <= q) {
     endGame();
   }
@@ -138,6 +159,9 @@ function displayQuestion() {
     // Hide any gifs on screen
     gif.src = "#";
     gifCard.style.display = "none";
+
+    // Hide the answer if user answered wrong
+    ifWrong.style.display = "none";
 
     // Show the next question
     question.innerHTML = triva[q].question;
@@ -170,13 +194,34 @@ function answer(answer) {
     // If answer is wrong, add to wrong answers
     wrong++;
     unanswered--;
-    q++;
+    
     
     trivaCard.style.display = "none";   // Hide question & answers
     timer.style.display = "none"        // Hide timer
     gif.src = "assets/images/wrong.gif" // Set gif src to the needed gif
     gifCard.style.display = "block";    // Show the gif
+    
+    // Show the right answer
+    switch (triva[q].correctAnswer) {
+      case "a":
+        ifWrong.textContent = "The Correct Answer Was '" + triva[q].answers.a + "'";
+        ifWrong.style.display= "block";
+        break;
+      case "b":
+        ifWrong.textContent = "The Correct Answer Was '" + triva[q].answers.b + "'";
+        ifWrong.style.display = "block";
+        break;
+      case "c":
+        ifWrong.textContent = "The Correct Answer Was '" + triva[q].answers.c + "'";
+        ifWrong.style.display = "block";
+        break;
+      case "d":
+        ifWrong.textContent = "The Correct Answer Was '" + triva[q].answers.d + "'";
+        ifWrong.style.display = "block";
+        break;
+    }
 
+    q++;
     // Show next question after 5 seconds
     setTimeout(displayQuestion, 5000);
   }
@@ -200,9 +245,15 @@ function answer(answer) {
 }
 
 function endGame() {
-// TODO At end of all questions, show end screen and # of right/wrong
-// TODO If time up, show end screen and # of right/wrong/unanswered
-console.log("All answered");
+  console.log("All answered");
+  // At end of all questions, show end screen and # of right/wrong
+  game.style.display = "none";   // Hide question & answers
+  end.style.display = "grid";    // Show the score
+
+  numCorrect.textContent = "Correct : " + correct;
+  numWrong.textContent = "Wrong : " + wrong;
+  numUnans.textContent = "Unanswered : " + unanswered;
+
 }
 
 // CALL FUNCTIONS ======================
