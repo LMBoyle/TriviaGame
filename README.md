@@ -15,4 +15,5 @@ Each question is timed, so answer fast! Based on if the answer is right, wrong o
 
 ## Links
 [Deployed Link](https://lmboyle.github.io/TriviaGame)
+
 [Portfolio](https://lmboyle.github.io/)
