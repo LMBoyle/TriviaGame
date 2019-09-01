@@ -12,7 +12,6 @@ Each question is timed, so answer fast! Based on if the answer is right, wrong o
 * HTML
 * CSS
 * JavaScript
-* jQuery
 
 ## Links
 [Deployed Link](https://lmboyle.github.io/TriviaGame)
